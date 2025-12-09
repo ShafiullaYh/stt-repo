@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Card, Button, Row, Col, Input, Select, Spin } from "antd";
 import { AudioOutlined, AudioMutedOutlined } from "@ant-design/icons";
-import useSpeechToText from "./useSpeechToText";
-import useSpeechmaticsRealtime from "./useSpeechmaticsRealtime";
-import useDeepgramRealtime from "./useDeepgramRealtime";
-import "./speech-section.scss";
+import useSpeechToText from "../../hooks/useSpeechToText";
+import useSpeechmaticsRealtime from "../../hooks/useSpeechmaticsRealtime";
+import useDeepgramRealtime from "../../hooks/useDeepgramRealtime";
+// import useElevenRealtime from "../../hooks/useElevenRealtime";
+// import useAssemblyRealtime from "../../hooks/useAssemblyRealtime";
+import "../../styles/speech-section.scss";
 
 const { TextArea } = Input;
 
@@ -78,8 +80,10 @@ export default function SpeechSection({
                                 onChange={setLocalProvider}
                             >
                                 <Select.Option value="webspeechapi">Browser Speech API</Select.Option>
-                                <Select.Option value="speechmatics">Speechmatics Medical</Select.Option>
-                                <Select.Option value="deepgram">Deepgram Nova-3 Medical</Select.Option>
+                                <Select.Option value="speechmatics">Speechmatics</Select.Option>
+                                <Select.Option value="deepgram">Deepgram Nova-3</Select.Option>
+                                <Select.Option value="assemblyai">Assembly-AI</Select.Option>
+                                <Select.Option value="elevenlabs">Eleven-labs</Select.Option>
                             </Select>
                         </div>
 
@@ -121,10 +125,11 @@ export default function SpeechSection({
                             Process
                         </Button>
 
-                        <div className="provider-info">{providerLabel}</div>
+                        {/* <div className="provider-info">{providerLabel}</div> */}
                     </div>
                 </Col>
 
+                {/* RIGHT: AI Summaries */}
                 <Col xs={24} lg={16}>
                     <div className="summary-panel">
                         <div className="section-header">
@@ -134,17 +139,23 @@ export default function SpeechSection({
                         {sectionData?.loading ? (
                             <div className="loading-container">
                                 <Spin size="default" />
-                                <div>Generating Summary...</div>
+                                <div>Generating AI Summaries...</div>
                             </div>
                         ) : sectionData?.openaiSummary || sectionData?.grokSummary ? (
                             <div className="dual-summary">
                                 <div className="summary-card openai">
-                                    <div className="summary-header">OpenAI GPT-4o</div>
-                                    <div className="summary-content">{sectionData.openaiSummary}</div>
+                                    <div className="summary-header">OpenAI</div>
+                                    <div
+                                        className="summary-content"
+                                        dangerouslySetInnerHTML={{ __html: sectionData.openaiSummary }}
+                                    />
                                 </div>
                                 <div className="summary-card grok">
-                                    <div className="summary-header">Grok (xAI)</div>
-                                    <div className="summary-content">{sectionData.grokSummary}</div>
+                                    <div className="summary-header">Grok</div>
+                                    <div
+                                        className="summary-content"
+                                        dangerouslySetInnerHTML={{ __html: sectionData.grokSummary }}
+                                    />
                                 </div>
                             </div>
                         ) : (

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Row, Col, Button } from "antd";
+import { Row, Col, message } from "antd";
 import SpeechSection from "./SpeechSection";
-import "./SpeechScreen.scss";
+import { summarizeWithOpenAI, summarizeWithGroq } from "../../utilities/apiService";
+import "../../styles/SpeechScreen.scss";
 
 const SpeechScreen = () => {
     const [sectionsData, setSectionsData] = useState({
@@ -11,7 +12,10 @@ const SpeechScreen = () => {
     });
 
     const handleProcess = async (text, section) => {
-        if (!text.trim()) return;
+        if (!text.trim()) {
+            message.warning('Please provide some text to process');
+            return;
+        }
 
         setSectionsData(prev => ({
             ...prev,
@@ -19,13 +23,16 @@ const SpeechScreen = () => {
         }));
 
         try {
+            // Call both APIs in parallel
             const [openaiSummary, grokSummary] = await Promise.all([
-                new Promise(resolve => setTimeout(() =>
-                    resolve(`${text.substring(0, 100)}... (OpenAI Medical Summary)`), 1500
-                )),
-                new Promise(resolve => setTimeout(() =>
-                    resolve(`${text.substring(0, 100)}... (Grok Clinical Analysis)`), 1500
-                ))
+                summarizeWithOpenAI(text).catch(err => {
+                    console.error('OpenAI failed:', err);
+                    return '<p style="color: #ef4444;">OpenAI summarization failed. Please try again.</p>';
+                }),
+                summarizeWithGroq(text).catch(err => {
+                    console.error('Groq failed:', err);
+                    return '<p style="color: #ef4444;">Groq summarization failed. Please try again.</p>';
+                })
             ]);
 
             setSectionsData(prev => ({
@@ -37,8 +44,12 @@ const SpeechScreen = () => {
                     loading: false
                 }
             }));
+
+            message.success('AI summaries generated successfully!');
         } catch (error) {
             console.error(`Error processing ${section}:`, error);
+            message.error('Failed to generate summaries');
+
             setSectionsData(prev => ({
                 ...prev,
                 [section]: { ...prev[section], loading: false }
@@ -51,7 +62,7 @@ const SpeechScreen = () => {
             <Row gutter={[0, 40]}>
                 <Col span={24}>
                     <h1 className="action-title">Discharge Summary Generator</h1>
-                    <p className="subtitle"></p>
+                    <p className="subtitle">Real-time medical transcription with discharge summaries</p>
                 </Col>
             </Row>
 

@@ -38,6 +38,9 @@ export default function useDeepgramRealtime() {
                 sample_rate: '16000',
                 channels: '1',
                 endpointing: '300',
+                utterance_end_ms: '1000',
+                numbers: 'true',
+                medical_dictation: 'true',
                 vad_events: 'true',
                 diarize: 'true',
                 filler_words: 'false'  // false : Remove um, uh...
