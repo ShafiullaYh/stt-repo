@@ -4,7 +4,7 @@ export const STT_PROVIDERS = [
     value: "deepgram",
     docs: "https://developers.deepgram.com"
   },
-    {
+  {
     label: "Speechmatics Medical",
     value: "speechmatics",
     docs: "https://docs.speechmatics.com"

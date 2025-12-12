@@ -31,7 +31,7 @@ axiosInstance.interceptors.request.use(function (config) {
 
 axiosInstance.interceptors.response.use(
     (response) => {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             resolve(response);
         });
     },
