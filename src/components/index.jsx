@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "antd";
 import SpeechSection from "./SpeechSection";
-import { speechSections } from "./constant";
+import { speechSections } from "../utilities/constant";
 
 const SpeechScreen = () => {
     const [clearTrigger, setClearTrigger] = useState(0);

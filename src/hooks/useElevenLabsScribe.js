@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { useScribe } from "@elevenlabs/react";
-import { AppActions } from "./actions";
+import { AppActions } from "../utilities/actions";
 
 export default function useElevenLabsScribe() {
     const [listening, setListening] = useState(false);

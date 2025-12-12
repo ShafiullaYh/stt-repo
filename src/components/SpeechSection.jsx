@@ -14,16 +14,16 @@ import {
     AudioOutlined,
     AudioMutedOutlined
 } from "@ant-design/icons";
-import useSpeechToText from "./useSpeechToText";
-import useSpeechmaticsRealtime from "./useSpeechmaticsRealtime";
-import useDeepgramRealtime from "./useDeepgramRealtime";
-import useElevenLabsScribe from "./useElevenLabsScribe";
-import useAssemblyAI from "./useAssemblyAi";
-import { STT_PROVIDERS } from "./constant";
-import { OpenAIPrompts, GroqAIPrompts } from "./promptConfig";
+import useSpeechToText from "../hooks/useSpeechToText";
+import useSpeechmaticsRealtime from "../hooks/useSpeechmaticsRealtime";
+import useDeepgramRealtime from "../hooks/useDeepgramRealtime";
+import useElevenLabsScribe from "../hooks/useElevenLabsScribe";
+import useAssemblyAI from "../hooks/useAssemblyAi";
+import { STT_PROVIDERS } from "../utilities/constant";
+import { OpenAIPrompts, GroqAIPrompts } from "../utilities/promptConfig";
 import { CopyOutlined } from "@ant-design/icons";
-import "./speech-section.scss";
-import { AppActions } from "./actions";
+import "../styles/speech-section.scss";
+import { AppActions } from "../utilities/actions";
 
 const { TextArea } = Input;
 const { Option } = Select;

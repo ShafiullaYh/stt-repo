@@ -1,4 +1,4 @@
-import SpeechScreen from './speech-to-text';
+import SpeechScreen from './components';
 import './App.css';
 
 function App() {
