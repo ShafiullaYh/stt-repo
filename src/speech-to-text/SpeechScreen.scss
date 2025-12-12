@@ -1,0 +1,72 @@
+.patient-labels-container {
+  padding: 1rem;
+}
+
+.action-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #0d5192;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.speech-provider-card {
+  padding: 1rem !important;
+  background: #ffffff;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.provider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.provider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.provider-title {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.provider-select {
+  margin-top: 0.8rem;
+  width: 300px;
+}
+
+.clear-all-btn {
+  min-width: 110px;
+}
+
+@media (max-width: 768px) {
+  .speech-provider-card {
+    padding: 0.8rem !important;
+  }
+
+  .provider-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .provider-select {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .clear-all-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .action-title {
+    font-size: 1.1rem;
+  }
+}

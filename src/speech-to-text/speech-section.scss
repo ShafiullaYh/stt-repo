@@ -1,0 +1,555 @@
+// ============================================
+// SPEECH TO TEXT SECTION STYLES
+// ============================================
+
+// Main container
+.patient-labels-container {
+  padding: 20px;
+  background-color: #fafafa;
+
+  @media (max-width: 576px) {
+    // padding: 12px;
+    padding: 1rem 1rem !important;
+  }
+}
+
+// Screen header (top bar with title and clear all button)
+.screen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #f5c48c;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  @media (max-width: 576px) {
+    padding: 12px 16px;
+    margin-bottom: 16px;
+  }
+}
+
+.action-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111111;
+
+  @media (max-width: 576px) {
+    font-size: 18px;
+  }
+}
+
+.clear-all-btn {
+  border-radius: 20px;
+  min-height: 40px;
+
+  @media (max-width: 576px) {
+    width: 100%;
+    margin-top: 8px;
+  }
+}
+
+// ============================================
+// SPEECH SECTION CARD
+// ============================================
+
+.speech-section-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #f5c48c;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+  margin-bottom: 24px;
+
+  @media (max-width: 768px) {
+    padding: 12px !important;
+    margin-bottom: 16px;
+    border-radius: 8px;
+  }
+}
+
+// ============================================
+// COLUMN ALIGNMENT FIX
+// ============================================
+
+.speech-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.column-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+}
+
+// Section header (title + action buttons)
+.section-header {
+  min-height: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+  align-items: center;
+
+  @media (max-width: 576px) {
+    gap: 8px;
+    min-height: auto;
+  }
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111111;
+  flex: 1 1 100%;
+
+  @media (min-width: 768px) {
+    flex: 0 0 auto;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 15px;
+  }
+}
+
+.section-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+
+  @media (max-width: 576px) {
+    width: 100%;
+    justify-content: stretch;
+
+    .ant-btn,
+    .ant-select {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+}
+
+// ============================================
+// BUTTONS AND SELECTS
+// ============================================
+
+.stt-select {
+  min-width: 180px;
+
+  @media (max-width: 576px) {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+.record-btn {
+  border-radius: 20px;
+  min-height: 40px;
+  padding: 0 20px;
+
+  @media (max-width: 576px) {
+    min-width: 100px;
+  }
+}
+
+.process-btn {
+  background: #ffb347;
+  border-color: #ffb347;
+  color: #111111;
+  font-weight: 500;
+  // min-height: 40px;
+
+  &:hover:not(:disabled),
+  &:focus:not(:disabled) {
+    background: #ffa733;
+    border-color: #ffa733;
+    color: #000000;
+  }
+
+  &:disabled {
+    background: #f5f5f5;
+    border-color: #d9d9d9;
+  }
+}
+
+.llm-select {
+  min-width: 110px;
+
+  @media (max-width: 576px) {
+    min-width: 0;
+  }
+}
+
+// ============================================
+// TEXTAREA STYLES
+// ============================================
+
+.speech-textarea {
+  font-size: 14px;
+  border-radius: 8px;
+  border-color: #e8e8e8;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s;
+
+  &:focus {
+    border-color: #ffb347;
+    box-shadow: 0 0 0 2px rgba(255, 179, 71, 0.1);
+  }
+
+  @media (max-width: 576px) {
+    font-size: 13px;
+  }
+}
+
+.processed-textarea {
+  background-color: #fffaf3;
+  border-color: #ffe7c7;
+}
+
+// ============================================
+// RECORDING BANNER
+// ============================================
+
+.recording-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #ff7f24;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  background-color: #fff4e6;
+  border-radius: 6px;
+  border-left: 3px solid #ffb347;
+
+  @media (max-width: 576px) {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background-color: #ff4d4f;
+  box-shadow: 0 0 0 0 rgba(255, 77, 79, 0.7);
+  animation: pulse 1.4s infinite;
+  flex-shrink: 0;
+
+  @media (max-width: 576px) {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(255, 77, 79, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(255, 77, 79, 0);
+  }
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(255, 77, 79, 0);
+  }
+}
+
+// ============================================
+// ACTION AREAS
+// ============================================
+
+.below-textarea-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-height: 40px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    min-height: auto;
+  }
+}
+
+.action-buttons-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+
+    .ant-btn,
+    .ant-select {
+      width: 100%;
+    }
+  }
+}
+
+.prompt-link-btn {
+  padding-left: 0;
+  color: #ff8c00;
+  font-weight: 500;
+  min-height: 40px;
+
+  &:hover {
+    color: #ff7f24;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    text-align: left;
+    justify-content: flex-start;
+  }
+}
+
+// Processed textarea actions (Confirm/Download buttons)
+.processed-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  min-height: 40px;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    min-height: auto;
+
+    .ant-btn {
+      width: 100%;
+    }
+  }
+}
+
+// ============================================
+// MODAL STYLES
+// ============================================
+
+.prompt-modal {
+  .ant-modal-header {
+    // background-color: #fffaf3;
+    border-bottom: 1px solid #f5c48c;
+    padding: 16px;
+  }
+
+  .ant-modal-title {
+    color: #111111;
+    font-weight: 600;
+    font-size: 16px;
+    width: 100%;
+
+    @media (max-width: 576px) {
+      font-size: 15px;
+    }
+  }
+
+  .ant-modal-body {
+    padding: 16px;
+
+    @media (max-width: 576px) {
+      padding: 16px;
+    }
+  }
+
+  .ant-modal-footer {
+    border-top: 1px solid #f0f0f0;
+    padding: 12px 24px;
+
+    @media (max-width: 576px) {
+      padding: 12px 16px;
+
+      .ant-btn {
+        min-width: 80px;
+      }
+    }
+  }
+
+  // Ensure modal is always visible and centered
+  .ant-modal-wrap {
+    overflow: auto;
+  }
+
+  .ant-modal {
+    top: 20px !important;
+    padding-bottom: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .ant-modal {
+      top: 10px !important;
+      margin: 0 auto;
+      max-width: 95% !important;
+    }
+
+    .ant-modal-content {
+      max-height: calc(100vh - 40px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ant-modal-body {
+      overflow-y: auto;
+      flex: 1;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+}
+
+// Modal title with dropdown
+.modal-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+.prompt-type-selector {
+  min-width: 150px;
+
+  @media (max-width: 576px) {
+    width: 100%;
+  }
+}
+
+// Info banner in modal
+.prompt-info-banner {
+  background-color: #fff4e6;
+  border: 1px solid #ffb347;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: #333;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+}
+
+// Textarea in modal
+.prompt-textarea {
+  font-family: "Monaco", "Menlo", "Consolas", "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+
+  &:disabled {
+    background-color: #f5f5f5;
+    color: #666;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 12px;
+  }
+}
+
+// ============================================
+// LOADING STATES
+// ============================================
+
+.custom-spin {
+  .ant-spin-blur {
+    opacity: 0.3;
+  }
+
+  .ant-spin-container {
+    transition: opacity 0.3s;
+  }
+}
+
+// ============================================
+// MOBILE OPTIMIZATIONS
+// ============================================
+
+// Prevent body scroll when modal is open
+body.modal-open {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .ant-modal-mask {
+    position: fixed !important;
+  }
+
+  .ant-modal-wrap {
+    position: fixed !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  // Ant Design overrides for touch targets
+  .ant-btn {
+    min-height: 40px !important;
+    padding: 8px 16px !important;
+    font-size: 14px !important;
+  }
+
+  .ant-select-selector {
+    min-height: 40px !important;
+    padding: 4px 12px !important;
+  }
+
+  .ant-input,
+  .ant-input-textarea textarea {
+    font-size: 14px !important;
+  }
+}
+
+// Small mobile devices
+@media (max-width: 375px) {
+  .speech-section-card {
+    padding: 0px !important;
+  }
+
+  .section-header-actions {
+    gap: 6px;
+  }
+
+  .action-buttons-group {
+    gap: 6px;
+  }
+}
+
+.speech-textarea.ant-input-disabled,
+.speech-textarea.ant-input[disabled] {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  opacity: 1 !important;
+}
