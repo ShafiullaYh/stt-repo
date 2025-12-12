@@ -137,7 +137,9 @@ export default function useDeepgramRealtime() {
                 wsRef.current.send(JSON.stringify({ event: "stop" }));
                 setTimeout(() => wsRef.current?.close(), 200);
             }
-        } catch { }
+        } catch (e) {
+            console.log(e)
+        }
 
         processorRef.current?.disconnect();
         processorRef.current = null;

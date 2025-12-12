@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { useScribe } from "@elevenlabs/react";
 import { AppActions } from "./actions";
 
@@ -52,7 +52,9 @@ export default function useElevenLabsScribe() {
         pausedRef.current = false;
         setPaused(false);
 
-        try { scribe.disconnect(); } catch { }
+        try { scribe.disconnect(); } catch (e) {
+            console.log(e)
+        }
         setListening(false);
     };
 
@@ -60,14 +62,18 @@ export default function useElevenLabsScribe() {
         pausedRef.current = true;
         setPaused(true);
 
-        try { scribe.pause?.(); } catch { }
+        try { scribe.pause?.(); } catch (e) {
+            console.log(e)
+        }
     };
 
     const resumeListening = () => {
         pausedRef.current = false;
         setPaused(false);
 
-        try { scribe.resume?.(); } catch { }
+        try { scribe.resume?.(); } catch (e) {
+            console.log(e)
+        }
     };
 
     return {

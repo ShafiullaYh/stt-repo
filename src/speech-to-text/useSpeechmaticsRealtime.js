@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 const getWebSocketURL = () => {
     const apiUrl = import.meta.env.VITE_API_URL
@@ -71,7 +71,9 @@ export default function useSpeechmaticsRealtime() {
                 if (data.transcript && data.is_partial) {
                     setPartialTranscript(data.transcript);
                 }
-            } catch { }
+            } catch (e) {
+                console.log(e)
+            }
         };
 
         ws.onclose = () => setListening(false);
@@ -117,9 +119,13 @@ export default function useSpeechmaticsRealtime() {
         try {
             wsRef.current?.send(JSON.stringify({ event: "stop" }));
             setTimeout(() => wsRef.current?.close(), 150);
-        } catch { }
+        } catch (e) {
+            console.log(e)
+        }
 
-        try { processorRef.current?.disconnect(); } catch { }
+        try { processorRef.current?.disconnect(); } catch (e) {
+            console.log(e)
+        }
         processorRef.current = null;
 
         if (audioContextRef.current) {
@@ -128,7 +134,7 @@ export default function useSpeechmaticsRealtime() {
                     await audioContextRef.current.close();
                 }
             } catch (e) {
-                console.warn("Speechmatics AudioContext already closed");
+                console.warn("Speechmatics AudioContext already closed", e);
             }
             audioContextRef.current = null;
         }
@@ -136,7 +142,9 @@ export default function useSpeechmaticsRealtime() {
         if (streamRef.current) {
             try {
                 streamRef.current.getTracks().forEach(t => t.stop());
-            } catch { }
+            } catch (e) {
+                console.log(e)
+            }
             streamRef.current = null;
         }
 
